@@ -12,24 +12,26 @@ namespace Task_15_Password
         {
             Console.WriteLine("Придумайте пароль: ");
             string setPassword = Console.ReadLine();
-            int attempts = 4;
+            int attempts = 3;
 
-            while (attempts != 0)
+            for (int i = attempts; i >= 0; i--)
             {
                 Console.WriteLine("Введите пароль: ");
                 string enterPassword = Console.ReadLine();
                 if (enterPassword == setPassword)
                 {
                     Console.WriteLine("Пароль введён верно!");
+                    break;
                 }
-                else
+                else if (i == 0)
                 {
-                    attempts--;
-                    Console.WriteLine($"Неверный пароль! Осталось {attempts} попытки");
+                    Console.WriteLine($"Вы ввели пароль неверно {attempts} раза. Программа завершена!");
+                    break;
                 }
+                
+                Console.WriteLine($"Неверный пароль! Осталось {i} попытки");
             }
 
-            Console.WriteLine("Вы ввели пароль неверно 3 раза. Программа завершена!");
         }
     }
 }
